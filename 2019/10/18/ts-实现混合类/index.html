@@ -56,13 +56,17 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小牛之家">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2017&#x2F;index.html">
+  <meta name="description" content="123456789101112131415161718192021222324252627class Mammal&amp;#123;    breathe():string&amp;#123;        return &quot;I&amp;apos;m alive!&quot;    &amp;#125;&amp;#125;class WingedAnimal &amp;#123;    fly() :string&amp;#123;        return &quot;I ca">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ts 实现混合类">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB&#x2F;index.html">
 <meta property="og:site_name" content="小牛之家">
+<meta property="og:description" content="123456789101112131415161718192021222324252627class Mammal&amp;#123;    breathe():string&amp;#123;        return &quot;I&amp;apos;m alive!&quot;    &amp;#125;&amp;#125;class WingedAnimal &amp;#123;    fly() :string&amp;#123;        return &quot;I ca">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-18T07:08:05.823Z">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/archives/2017/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
 
 
 <script id="page-configurations">
@@ -70,13 +74,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>归档 | 小牛之家</title>
+  <title>ts 实现混合类 | 小牛之家</title>
   
 
 
@@ -250,122 +254,110 @@
         <div class="content-wrap">
             
 
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-  
-
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        
-        
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小牛之家">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
           
-        
-        <span class="collection-header">嗯..! 目前共计 3 篇日志。 继续努力。</span>
-      </div>
-      
+            ts 实现混合类
+            
 
-      
+          
+        </h1>
 
-  
-  
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
 
-  
+              
+                
+              
+
+              <time title="创建时间：2019-10-18 15:05:47 / 修改时间：15:08:05" itemprop="dateCreated datePublished" datetime="2019-10-18T15:05:47+08:00">2019-10-18</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
     
-    <div class="collection-year">
-      <h1 class="collection-header">2017</h1>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span></span>&#123;</span><br><span class="line">    breathe():string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I'm alive!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WingedAnimal</span> </span>&#123;</span><br><span class="line">    fly() :string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I can fly!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bat</span> <span class="title">implements</span> <span class="title">Mammal</span>,<span class="title">WingedAnimal</span></span>&#123;</span><br><span class="line">    breathe:<span class="function"><span class="params">()</span>=&gt;</span>string;</span><br><span class="line">    fly: <span class="function"><span class="params">()</span> =&gt;</span> string;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">applyMixins</span>(<span class="params">derivedCtor:any,baseCtors:any[]</span>)</span>&#123;</span><br><span class="line">    baseCtors.forEach(<span class="function"><span class="params">baseCtor</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">Object</span>.getOwnPropertyNames(baseCtor.prototype).forEach(<span class="function"><span class="params">name</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(name!==<span class="string">'constructor'</span>)&#123;</span><br><span class="line">                derivedCtor.prototype[name]=baseCtor.prototype[name];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">applyMixins(Bat,[Mammal,WingedAnimal])</span><br><span class="line"><span class="keyword">var</span> bat=<span class="keyword">new</span> Bat();</span><br><span class="line"><span class="built_in">console</span>.log(bat.breathe());</span><br><span class="line"><span class="built_in">console</span>.log(bat.fly());</span><br></pre></td></tr></table></figure>
     </div>
-  
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2017-07-27T10:02:14+08:00"
-              content="2017-07-27">
-          07-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
+    
+    
+    
         
-          <a class="post-title-link" href="/2017/07/27/es6-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url">
-            <span itemprop="name">es6 模板字符串</span>
-          </a>
-        
-      </h2>
+      
 
-    </header>
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/typescript/" rel="tag"># typescript</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2017/07/27/es6-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="es6 模板字符串">
+                  <i class="fa fa-chevron-left"></i> es6 模板字符串
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </article>
-
-
-
+  
   
   
 
-  
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2017-07-27T09:54:17+08:00"
-              content="2017-07-27">
-          07-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2017/07/27/meteor-%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/" itemprop="url">
-            <span itemprop="name">meteor 加载静态文件</span>
-          </a>
-        
-      </h2>
-
-    </header>
-  </article>
-
-
-
-
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -382,6 +374,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
