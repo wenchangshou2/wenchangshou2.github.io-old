@@ -56,17 +56,16 @@
   };
 </script>
 
-  <meta name="description" content="ts混合类特性">
-<meta name="keywords" content="typescript">
+  <meta name="description" content="shell写的一个mysql自动初始化脚本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ts 实现混合类">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB&#x2F;index.html">
+<meta property="og:title" content="mysql 自动化脚本">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;mysql-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC&#x2F;index.html">
 <meta property="og:site_name" content="小牛之家">
-<meta property="og:description" content="ts混合类特性">
+<meta property="og:description" content="shell写的一个mysql自动初始化脚本">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-18T07:12:12.278Z">
+<meta property="og:updated_time" content="2019-10-18T07:27:58.044Z">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/18/mysql-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">
 
 
 <script id="page-configurations">
@@ -80,7 +79,7 @@
   };
 </script>
 
-  <title>ts 实现混合类 | 小牛之家</title>
+  <title>mysql 自动化脚本 | 小牛之家</title>
   
 
 
@@ -262,7 +261,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/mysql-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wcs">
@@ -276,7 +275,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            ts 实现混合类
+            mysql 自动化脚本
             
 
           
@@ -293,7 +292,7 @@
                 
               
 
-              <time title="创建时间：2019-10-18 15:05:47 / 修改时间：15:12:12" itemprop="dateCreated datePublished" datetime="2019-10-18T15:05:47+08:00">2019-10-18</time>
+              <time title="创建时间：2019-10-18 15:27:06 / 修改时间：15:27:58" itemprop="dateCreated datePublished" datetime="2019-10-18T15:27:06+08:00">2019-10-18</time>
             </span>
           
             
@@ -312,10 +311,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ts混合类特性</p>
+        <p>shell写的一个mysql自动初始化脚本</p>
 <a id="more"></a>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span></span>&#123;</span><br><span class="line">    breathe():string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I'm alive!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WingedAnimal</span> </span>&#123;</span><br><span class="line">    fly() :string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I can fly!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bat</span> <span class="title">implements</span> <span class="title">Mammal</span>,<span class="title">WingedAnimal</span></span>&#123;</span><br><span class="line">    breathe:<span class="function"><span class="params">()</span>=&gt;</span>string;</span><br><span class="line">    fly: <span class="function"><span class="params">()</span> =&gt;</span> string;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">applyMixins</span>(<span class="params">derivedCtor:any,baseCtors:any[]</span>)</span>&#123;</span><br><span class="line">    baseCtors.forEach(<span class="function"><span class="params">baseCtor</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">Object</span>.getOwnPropertyNames(baseCtor.prototype).forEach(<span class="function"><span class="params">name</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(name!==<span class="string">'constructor'</span>)&#123;</span><br><span class="line">                derivedCtor.prototype[name]=baseCtor.prototype[name];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">applyMixins(Bat,[Mammal,WingedAnimal])</span><br><span class="line"><span class="keyword">var</span> bat=<span class="keyword">new</span> Bat();</span><br><span class="line"><span class="built_in">console</span>.log(bat.breathe());</span><br><span class="line"><span class="built_in">console</span>.log(bat.fly());</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/ash</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">USER="root"</span><br><span class="line">NEWUSER="xxx"</span><br><span class="line">PASSWORD="xxxx"</span><br><span class="line">NEWPASSWORD="xxxxxxxxxx"</span><br><span class="line">DATE=`date +%Y/%m/%d`</span><br><span class="line">OUTPUT="/mnt/data/database/$DATE"</span><br><span class="line">OPERATOR="export"</span><br><span class="line">FILES="/tmp/database/*"</span><br><span class="line">DATABASEPATH="/mnt/db/mysql"</span><br><span class="line">TMPPATH="/mnt/db/tmp"</span><br><span class="line">echo $OUTPUT</span><br><span class="line">[ ! -d "$OUTPUT" ] &amp;&amp; &#123;</span><br><span class="line">    echo "mkdir $OUTPUT"</span><br><span class="line">    mkdir -p $OUTPUT</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">数据为初始化</span></span><br><span class="line">action_init()&#123;</span><br><span class="line">    flag=$(uci get -q system.@general[0].databaseinit)</span><br><span class="line">    [ ! -z "$flag" ] &amp;&amp; return</span><br><span class="line">	[  -z "$flag" ] &amp;&amp; &#123;</span><br><span class="line">        section=$(uci get -q system.@general[0])</span><br><span class="line">		[ -z "$section" ] &amp;&amp;&#123;</span><br><span class="line">			uci add system general</span><br><span class="line">		&#125;</span><br><span class="line">		uci set system.@general[0].databaseinit=1</span><br><span class="line">        uci commit system</span><br><span class="line">	&#125;</span><br><span class="line">    [ -d "$DATABASEPATH" ] &amp;&amp; rm -rf $DATABASEPATH</span><br><span class="line">    [ -d "$TMPPATH" ] &amp;&amp; rm -rf $TMPPATH</span><br><span class="line">    sed -i "s,^datadir.*,datadir         = \"$DATABASEPATH\",g" /etc/my.cnf</span><br><span class="line">    sed -i 's,^tmpdir.*,tmpdir          = "/mnt/db/tmp",g' /etc/my.cnf</span><br><span class="line">    [ ! -d "$DATABASEPATH" ] &amp;&amp; mkdir -p $DATABASEPATH</span><br><span class="line">    [ ! -d "$TMPPATH" ] &amp;&amp; mkdir -p $TMPPATH</span><br><span class="line">    mysql_install_db --force</span><br><span class="line">    /etc/init.d/mysqld start</span><br><span class="line">    /etc/init.d/mysqld enable</span><br><span class="line">    mysqladmin -u  $USER password "$PASSWORD"</span><br><span class="line">    [ -f /tmp/adduser.sql ] &amp;&amp; rm -rf /tmp/adduser.sql</span><br><span class="line">    echo "insert into mysql.user(Host,User,Password) values(\"localhost\",\"$NEWUSER\",password(\"$NEWPASSWORD\"));"&gt;/tmp/adduser.sql</span><br><span class="line">    echo "GRANT ALL PRIVILEGES ON *.* TO \"$NEWUSER\"@\"localhost\" IDENTIFIED BY \"$NEWPASSWORD\"; "</span><br><span class="line">    echo "GRANT ALL PRIVILEGES ON *.* TO \"$NEWUSER\"@\"localhost\" IDENTIFIED BY \"$NEWPASSWORD\"; "&gt;&gt;/tmp/adduser.sql</span><br><span class="line">    echo "flush privileges;"&gt;&gt;/tmp/adduser.sql</span><br><span class="line">    mysql -u $USER -p$PASSWORD &lt; /tmp/adduser.sql</span><br><span class="line">    rm -rf /tmp/adduser.sql</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">数据库导出</span></span><br><span class="line">action_export()&#123;</span><br><span class="line">    databases=`mysql -u $USER -p$PASSWORD -e "SHOW DATABASES;" | tr -d "| " | grep -v Database`</span><br><span class="line">    echo "backup start"</span><br><span class="line">    for db in $databases; do</span><br><span class="line">        if [[ "$db" != "information_schema" ]] &amp;&amp; [[ "$db" != "performance_schema" ]] &amp;&amp; [[ "$db" != "mysql" ]] &amp;&amp; [[ "$db" != _* ]] ; then</span><br><span class="line">            echo "Dumping database: $db"</span><br><span class="line">            [ -f $OUTPUT/`date +%Y%m%d`.$db.sql ] &amp;&amp; &#123;</span><br><span class="line">                echo "rm sql file"</span><br><span class="line">                rm -rf $OUTPUT/`date +%Y%m%d`.$db.sql</span><br><span class="line">            &#125;</span><br><span class="line">            mysqldump -u $NEWUSER -p$NEWPASSWORD --databases $db &gt; $OUTPUT/`date +%Y%m%d`.$db.sql</span><br><span class="line">            [ -f $OUTPUT/`date +%Y%m%d`.$db.sql.gz ] &amp;&amp; &#123;</span><br><span class="line">                echo "rm file"</span><br><span class="line">                rm -rf $OUTPUT/`date +%Y%m%d`.$db.sql.gz</span><br><span class="line">            &#125;</span><br><span class="line">            gzip $OUTPUT/`date +%Y%m%d`.$db.sql</span><br><span class="line">            rm -rf $OUTPUT/`date +%Y%m%d`.$db.sql</span><br><span class="line">        fi</span><br><span class="line">    done</span><br><span class="line">    echo "backup end"</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">数据库导入</span></span><br><span class="line">action_import()&#123;</span><br><span class="line">    for f in $FILES</span><br><span class="line">    do</span><br><span class="line">        [ -f "$f" ] &amp;&amp;&#123;</span><br><span class="line">            echo "Processing $f file..."</span><br><span class="line">            mysql -u $NEWUSER -p$NEWPASSWORD &lt; $f</span><br><span class="line">        &#125;</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br><span class="line">[ ! -z "$1" ] &amp;&amp; OPERATOR=$1</span><br><span class="line">[ ! -z "$2" ] &amp;&amp; USER=$2</span><br><span class="line">[ ! -z "$3" ] &amp;&amp; PASSWORD=$3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if [ "$OPERATOR" == "export" ]; then</span><br><span class="line">    action_export</span><br><span class="line">elif [ "$OPERATOR" == "import" ]; then</span><br><span class="line">    action_import</span><br><span class="line">elif [ "$OPERATOR" == "init" ]; then</span><br><span class="line">    action_init</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -325,23 +323,14 @@
       
 
       <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/typescript/" rel="tag"># typescript</a>
-            
-          </div>
-        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2017/07/27/es6-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="es6 模板字符串">
-                  <i class="fa fa-chevron-left"></i> es6 模板字符串
+                <a href="/2019/10/18/Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="next" title="Raspberry Pi 使用DS18B20温度传感器">
+                  <i class="fa fa-chevron-left"></i> Raspberry Pi 使用DS18B20温度传感器
                 </a>
               
             </div>
@@ -349,10 +338,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/18/Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="prev" title="Raspberry Pi 使用DS18B20温度传感器">
-                  Raspberry Pi 使用DS18B20温度传感器 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>

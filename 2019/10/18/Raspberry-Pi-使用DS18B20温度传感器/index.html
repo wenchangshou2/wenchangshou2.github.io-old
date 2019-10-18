@@ -56,17 +56,19 @@
   };
 </script>
 
-  <meta name="description" content="ts混合类特性">
-<meta name="keywords" content="typescript">
+  <meta name="description" content="raspberry 温度采集">
+<meta name="keywords" content="raspberry">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ts 实现混合类">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB&#x2F;index.html">
+<meta property="og:title" content="Raspberry Pi 使用DS18B20温度传感器">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;18&#x2F;Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8&#x2F;index.html">
 <meta property="og:site_name" content="小牛之家">
-<meta property="og:description" content="ts混合类特性">
+<meta property="og:description" content="raspberry 温度采集">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-18T07:12:12.278Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;7xrkms.com1.z0.glb.clouddn.com&#x2F;14960683305689.png">
+<meta property="og:updated_time" content="2019-10-18T07:28:21.232Z">
 <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;7xrkms.com1.z0.glb.clouddn.com&#x2F;14960683305689.png">
+  <link rel="canonical" href="http://yoursite.com/2019/10/18/Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -80,7 +82,7 @@
   };
 </script>
 
-  <title>ts 实现混合类 | 小牛之家</title>
+  <title>Raspberry Pi 使用DS18B20温度传感器 | 小牛之家</title>
   
 
 
@@ -262,7 +264,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wcs">
@@ -276,7 +278,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            ts 实现混合类
+            Raspberry Pi 使用DS18B20温度传感器
             
 
           
@@ -293,7 +295,7 @@
                 
               
 
-              <time title="创建时间：2019-10-18 15:05:47 / 修改时间：15:12:12" itemprop="dateCreated datePublished" datetime="2019-10-18T15:05:47+08:00">2019-10-18</time>
+              <time title="创建时间：2019-10-18 15:25:43 / 修改时间：15:28:21" itemprop="dateCreated datePublished" datetime="2019-10-18T15:25:43+08:00">2019-10-18</time>
             </span>
           
             
@@ -312,10 +314,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ts混合类特性</p>
+        <p>raspberry 温度采集</p>
 <a id="more"></a>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mammal</span></span>&#123;</span><br><span class="line">    breathe():string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I'm alive!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WingedAnimal</span> </span>&#123;</span><br><span class="line">    fly() :string&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"I can fly!"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bat</span> <span class="title">implements</span> <span class="title">Mammal</span>,<span class="title">WingedAnimal</span></span>&#123;</span><br><span class="line">    breathe:<span class="function"><span class="params">()</span>=&gt;</span>string;</span><br><span class="line">    fly: <span class="function"><span class="params">()</span> =&gt;</span> string;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">applyMixins</span>(<span class="params">derivedCtor:any,baseCtors:any[]</span>)</span>&#123;</span><br><span class="line">    baseCtors.forEach(<span class="function"><span class="params">baseCtor</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">Object</span>.getOwnPropertyNames(baseCtor.prototype).forEach(<span class="function"><span class="params">name</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(name!==<span class="string">'constructor'</span>)&#123;</span><br><span class="line">                derivedCtor.prototype[name]=baseCtor.prototype[name];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">applyMixins(Bat,[Mammal,WingedAnimal])</span><br><span class="line"><span class="keyword">var</span> bat=<span class="keyword">new</span> Bat();</span><br><span class="line"><span class="built_in">console</span>.log(bat.breathe());</span><br><span class="line"><span class="built_in">console</span>.log(bat.fly());</span><br></pre></td></tr></table></figure>
+<h1 id="DS18B20-温度传感器"><a href="#DS18B20-温度传感器" class="headerlink" title="DS18B20 温度传感器"></a>DS18B20 温度传感器</h1><p>最近心血来潮的想要折腾raspberry，所以就买了一堆的传感器，现在主要讲解温度传感器的使用。</p>
+<p>![屏幕快照 2017-05-29 下午10.31.39](<a href="http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照" target="_blank" rel="noopener">http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照</a> 2017-05-29 下午10.31.39.png)</p>
+<p><img src="http://7xrkms.com1.z0.glb.clouddn.com/14960683305689.png" alt=""></p>
+<p>Pin1(GND)接到 P1-06(GND)<br>Pin2(DQ)接到 P1-07(GPIO4)<br>Pin3(VCC)接到P1-01(3.3v)</p>
+<p>为了能够让系统正确的识别传感器，我们需要对<strong>/boot/config.txt</strong>文件进行编辑</p>
+<blockquote>
+<p>sudo vim /boot/config.txt</p>
+</blockquote>
+<p>在文件的未必添加下面的语句</p>
+<blockquote>
+<p>dtoverlay=w1-gpio,gpiopin=4</p>
+</blockquote>
+<p>添加完成之后我们重启raspberry</p>
+<blockquote>
+<p>sudo reboot</p>
+</blockquote>
+<p>重启完成之后我们需要进行/sys/bus/w1/devices目录</p>
+<blockquote>
+<p>cd /sys/bus/w1/devices</p>
+</blockquote>
+<p>通过调用ls命令，我们发现这个目录会有类似28-0416b3b833ff这样的一个目录，这个目录名称并是你传感器的ID，.在目录下面会有一个w1_slave文件，我们通过调用 cat命令可以读取到传感器的实时数据。</p>
+<blockquote>
+<p>cd 28-0416b3b833ff<br>ls<br>cat w1_slave</p>
+</blockquote>
+<p>完整的命令如下图所示<br>![屏幕快照 2017-05-29 下午10.42.01](<a href="http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照" target="_blank" rel="noopener">http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照</a> 2017-05-29 下午10.42.01.png)<br>其中t=30312是我实际测量到温度值，在上面的图中的温度为30.312度</p>
+<p>同时我们可以利用python脚本来读取数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gettemp</span><span class="params">(id)</span>:</span></span><br><span class="line">  <span class="keyword">try</span>:</span><br><span class="line">    mytemp = <span class="string">''</span></span><br><span class="line">    filename = <span class="string">'w1_slave'</span></span><br><span class="line">    f = open(<span class="string">'/sys/bus/w1/devices/'</span> + id + <span class="string">'/'</span> + filename, <span class="string">'r'</span>)</span><br><span class="line">    line = f.readline() <span class="comment"># read 1st line</span></span><br><span class="line">    crc = line.rsplit(<span class="string">' '</span>,<span class="number">1</span>)</span><br><span class="line">    crc = crc[<span class="number">1</span>].replace(<span class="string">'\n'</span>, <span class="string">''</span>)</span><br><span class="line">    <span class="keyword">if</span> crc==<span class="string">'YES'</span>:</span><br><span class="line">      line = f.readline() <span class="comment"># read 2nd line</span></span><br><span class="line">      mytemp = line.rsplit(<span class="string">'t='</span>,<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      mytemp = <span class="number">99999</span></span><br><span class="line">    f.close()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> int(mytemp[<span class="number">1</span>])</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">except</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">99999</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"> </span><br><span class="line">  <span class="comment"># Script has been called directly</span></span><br><span class="line">  id = <span class="string">'28-0416b3b833ff'</span></span><br><span class="line">  <span class="keyword">print</span> <span class="string">"Temp : "</span> + <span class="string">'&#123;:.3f&#125;'</span>.format(gettemp(id)/float(<span class="number">1000</span>))</span><br></pre></td></tr></table></figure>
+
+<p>我们通过命令行调用，得到如类似下面的结果</p>
+<p>![屏幕快照 2017-05-29 下午10.48.50](<a href="http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照" target="_blank" rel="noopener">http://7xrkms.com1.z0.glb.clouddn.com/屏幕快照</a> 2017-05-29 下午10.48.50.png)</p>
+
     </div>
 
     
@@ -330,7 +362,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/typescript/" rel="tag"># typescript</a>
+              <a href="/tags/raspberry/" rel="tag"># raspberry</a>
             
           </div>
         
@@ -340,8 +372,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2017/07/27/es6-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="es6 模板字符串">
-                  <i class="fa fa-chevron-left"></i> es6 模板字符串
+                <a href="/2019/10/18/ts-%E5%AE%9E%E7%8E%B0%E6%B7%B7%E5%90%88%E7%B1%BB/" rel="next" title="ts 实现混合类">
+                  <i class="fa fa-chevron-left"></i> ts 实现混合类
                 </a>
               
             </div>
@@ -350,8 +382,8 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/10/18/Raspberry-Pi-%E4%BD%BF%E7%94%A8DS18B20%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8/" rel="prev" title="Raspberry Pi 使用DS18B20温度传感器">
-                  Raspberry Pi 使用DS18B20温度传感器 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/10/18/mysql-%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" rel="prev" title="mysql 自动化脚本">
+                  mysql 自动化脚本 <i class="fa fa-chevron-right"></i>
                 </a>
               
             </div>
@@ -398,6 +430,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DS18B20-温度传感器"><span class="nav-number">1.</span> <span class="nav-text">DS18B20 温度传感器</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
