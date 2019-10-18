@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.1">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.1" color="#222">
+  <link rel="alternate" href="/atom.xml" title="小牛之家" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.1">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="meteor 加载静态文件">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="meteor 加载静态文件">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2017&#x2F;07&#x2F;27&#x2F;meteor-%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6&#x2F;index.html">
+<meta property="og:site_name" content="小牛之家">
+<meta property="og:description" content="meteor 加载静态文件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-18T04:50:46.119Z">
+<meta name="twitter:card" content="summary">
+  <link rel="canonical" href="http://yoursite.com/2017/07/27/meteor-%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>meteor 加载静态文件 | 小牛之家</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小牛之家</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+        
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-schedule">
+      
+    
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>日程表</a>
+
+  </li>
+      
+    
+      
+      
+        
+        
+        <li class="menu-item menu-item-sitemap">
+      
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      
+    
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/27/meteor-%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小牛之家">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            meteor 加载静态文件
+            
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-27 09:54:17" itemprop="dateCreated datePublished" datetime="2017-07-27T09:54:17+08:00">2017-07-27</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-18 12:50:46" itemprop="dateModified" datetime="2019-10-18T12:50:46+08:00">2019-10-18</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>meteor 加载静态文件</p>
+<a id="more"></a>
+<h1 id="meteor-加载外部资源文件"><a href="#meteor-加载外部资源文件" class="headerlink" title="meteor 加载外部资源文件"></a>meteor 加载外部资源文件</h1><p>在很多时候开发的时候我们需要导入一些外部的数据到程序当中，这些数据可能存放在csv,XML.json之类的文件当中，我们就将其导入到程序当中，使其能够供全局进行访问。</p>
+<p><strong>private/json/city.json</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"010"</span>,<span class="attr">"city"</span>:<span class="string">"北京"</span>, <span class="attr">"pinyin"</span>: <span class="string">"beijing"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"021"</span>,<span class="attr">"city"</span>:<span class="string">"上海"</span>, <span class="attr">"pinyin"</span>:<span class="string">"shanghai"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0571"</span>,<span class="attr">"city"</span>:<span class="string">"杭州"</span>, <span class="attr">"pinyin"</span>:<span class="string">"hangzhou"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0574"</span>,<span class="attr">"city"</span>:<span class="string">"宁波"</span>, <span class="attr">"pinyin"</span>:<span class="string">"ningbo"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0573"</span>,<span class="attr">"city"</span>:<span class="string">"嘉兴"</span>, <span class="attr">"pinyin"</span>:<span class="string">"jiaxing"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0575"</span>,<span class="attr">"city"</span>:<span class="string">"绍兴"</span>, <span class="attr">"pinyin"</span>:<span class="string">"shaoxing"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0577"</span>,<span class="attr">"city"</span>:<span class="string">"温州"</span>, <span class="attr">"pinyin"</span>:<span class="string">"wenzhou"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0580"</span>,<span class="attr">"city"</span>:<span class="string">"舟山"</span>, <span class="attr">"pinyin"</span>:<span class="string">"zhoushan"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0572"</span>,<span class="attr">"city"</span>:<span class="string">"湖州"</span>, <span class="attr">"pinyin"</span>:<span class="string">"huzhou"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0579"</span>,<span class="attr">"city"</span>:<span class="string">"金华"</span>, <span class="attr">"pinyin"</span>:<span class="string">"jinhua"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0578"</span>,<span class="attr">"city"</span>:<span class="string">"丽水"</span>, <span class="attr">"pinyin"</span>:<span class="string">"lishui"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0576"</span>,<span class="attr">"city"</span>:<span class="string">"台州"</span>, <span class="attr">"pinyin"</span>:<span class="string">"taizhou"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> &#123;<span class="attr">"code"</span>:<span class="string">"0570"</span>,<span class="attr">"city"</span>:<span class="string">"衢州"</span>, <span class="attr">"pinyin"</span>:<span class="string">"quzhou"</span>,<span class="attr">"province"</span>: <span class="string">"浙江"</span>&#125;,</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>特殊注意是private文件夹的数据是不提供给客户端</p>
+</blockquote>
+<p>上面的是包含城市名称以及区号的json数据，我们将其保存在文件当中，这里我们可以通过Assets API来访问以及处理相应的数据。</p>
+<p><strong>server/main.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Meteor &#125; <span class="keyword">from</span> <span class="string">'meteor/meteor'</span>;</span><br><span class="line"></span><br><span class="line">Meteor.startup(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> cityList=<span class="built_in">JSON</span>.parse(Assets.getText(<span class="string">'json/city.json'</span>))</span><br><span class="line">  _.each(cityList, <span class="function"><span class="keyword">function</span>(<span class="params">city</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(city);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码会将所有的数据进行输出，但是有的时候这些数据可以会被其他的项目需要，这里我们需要通过添加一个package来解决，同时我们只可以将这个包上传到<a href="https://atmospherejs.com" target="_blank" rel="noopener">atmospherejs</a><br>我们需要将之前的json文件移到cityjson包，最终的目录文件如下所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">└── cityjson</span><br><span class="line">    ├── README.md</span><br><span class="line">    ├── city.json</span><br><span class="line">    ├── cityjson-tests.js</span><br><span class="line">    ├── cityjson.js</span><br><span class="line">    └── package.js</span><br></pre></td></tr></table></figure>
+
+<p><strong>package.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Package.describe(&#123;</span><br><span class="line">  name: <span class="string">'wenchangshou:cityjson'</span>,</span><br><span class="line">  version: <span class="string">'0.0.1'</span>,</span><br><span class="line">  <span class="comment">// Brief, one-line summary of the package.</span></span><br><span class="line">  summary: <span class="string">'获取国内的所有的城市名称以及区号'</span>,</span><br><span class="line">  <span class="comment">// URL to the Git repository containing the source code for this package.</span></span><br><span class="line">  git: <span class="string">''</span>,</span><br><span class="line">  <span class="comment">// By default, Meteor will default to using README.md for documentation.</span></span><br><span class="line">  <span class="comment">// To avoid submitting documentation, set this field to null.</span></span><br><span class="line">  documentation: <span class="string">'README.md'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Package.onUse(<span class="function"><span class="keyword">function</span> (<span class="params">api</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//  api.versionsFrom('1.4.2.7');</span></span><br><span class="line">  api.versionsFrom(<span class="string">'1.0'</span>)</span><br><span class="line">  api.export(<span class="string">'cityList'</span>, <span class="string">'server'</span>);</span><br><span class="line">  api.addAssets(<span class="string">'city.json'</span>, <span class="string">'server'</span>)</span><br><span class="line">  api.addFiles(<span class="string">'cityjson.js'</span>, <span class="string">'server'</span>)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Package.onTest(<span class="function"><span class="keyword">function</span>(<span class="params">api</span>) </span>&#123;</span><br><span class="line">  api.use(<span class="string">'ecmascript'</span>);</span><br><span class="line">  api.use(<span class="string">'tinytest'</span>);</span><br><span class="line">  api.use(<span class="string">'wenchangshou:cityjson'</span>);</span><br><span class="line">  api.mainModule(<span class="string">'cityjson-tests.js'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>cityjson.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cityCollection=<span class="built_in">JSON</span>.parse(Assets.getText(<span class="string">'city.json'</span>));</span><br><span class="line">cityList=&#123;<span class="attr">city</span>:cityCollection&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Assets.getText 可以从当前的包内进行调用 ，通过addFiles进行数据的暴露</li>
+<li>之后我们需要读取以及解析数据，city里面包含了所有的城市信息，并且我们通过cityList这个全局变量进行数据的暴露</li>
+<li>我们通过 api.addAssets将静态的文件导入到包中，通过Assets.getText进行访问</li>
+</ul>
+<h3 id="meteor-包上传"><a href="#meteor-包上传" class="headerlink" title="meteor 包上传"></a>meteor 包上传</h3><p>上面的操作我们已经创建了一个能够使用的包了，这时候我们需要将这个包上传，方便将来的使用</p>
+<blockquote>
+<p>meteor publish –create </p>
+</blockquote>
+<p>上传成功之后我们可以直接访问<a href="https://atmospherejs.com/wenchangshou/cityjson" target="_blank" rel="noopener">cityjson</a>来查看我们上传的包，如下图所示<br>![屏幕快照 2017-02-18 下午5.37.22](<a href="http://o7ez1faxc.bkt.clouddn.com/2017-02-18-屏幕快照" target="_blank" rel="noopener">http://o7ez1faxc.bkt.clouddn.com/2017-02-18-屏幕快照</a> 2017-02-18 下午5.37.22.png)</p>
+<p>上传成功之后我们将pckages/cityjson目录删除</p>
+<blockquote>
+<p>rm -rf packages/cityjson</p>
+</blockquote>
+<p>我们在主目录当中添加我们上传的包,其中wenchangshou是我的用户名</p>
+<blockquote>
+<p>meteor add wenchangshou:cityjson</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/node/" rel="tag"># node</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2017/07/27/es6-%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="es6 模板字符串">
+                  es6 模板字符串 <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#meteor-加载外部资源文件"><span class="nav-number">1.</span> <span class="nav-text">meteor 加载外部资源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#meteor-包上传"><span class="nav-number">1.0.1.</span> <span class="nav-text">meteor 包上传</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">wcs</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:wenchangshou@gmail.com" title="E-Mail &amp;rarr; mailto:wenchangshou@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wcs</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">
+      
+    主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.1"></script><script src="/js/motion.js?v=7.4.1"></script>
+<script src="/js/schemes/pisces.js?v=7.4.1"></script>
+<script src="/js/next-boot.js?v=7.4.1"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
